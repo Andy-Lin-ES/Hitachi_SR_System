@@ -29,35 +29,35 @@ def generate_excel(form_data, result):
         ws["AQ3"] = str(form_data["簽發日"])        # 簽發日 (請確認座標)
         ws["AS6"] = form_data["SVO_NO"]            # SVO. NO.
         ws["H7"] = form_data["顧客名"]            # 顧客名
-        ws["AS8"] = form_data["依頼作業NO"]        # 依頼作業NO.
+        ws["AS8"] = form_data["依賴作業NO"]        # 依賴作業NO.
         ws["H9"] = form_data["承辦人"]            # 承辦人
         
         # 2. 設備資訊
         ws["H12"] = form_data["品名"]             # 品名(Model)
         ws["X12"] = form_data["形式"]             # 形式
         ws["AN12"] = form_data["SN"]               # S/N
-        ws["BC12"] = "〇" if form_data["保固狀態"] == "保証期間内" else "" # 保証期間内
-        ws["BC13"] = "〇" if form_data["保固狀態"] == "保証期間外" else "" # 保証期間外
+        ws["BC12"] = "〇" if form_data["保固狀態"] == "保證期間內" else "" # 保證期間内
+        ws["BC13"] = "〇" if form_data["保固狀態"] == "保證期間外" else "" # 保證期間外
         ws["H14"] = str(form_data["製造年月"])    # 製造年月
         ws["X14"] = str(form_data["啟用年月"])    # 啟用年月
         ws["AN14"] = form_data["Tool_ID"]          # Tool ID
-        ws["BC14"] = "〇" if form_data["完工狀態"] == "完了" else "" # 完了
-        ws["BC15"] = "〇" if form_data["完工狀態"] == "未完" else "" # 未完
+        ws["BC14"] = "〇" if form_data["完工狀態"] == "已完工" else "" # 已完工
+        ws["BC15"] = "〇" if form_data["完工狀態"] == "未完工" else "" # 未完工
         
         # 3. 作業內容與細節
-        ws["G16"] = form_data["依賴内容"]
-        ws["G18"] = form_data["現象内容"]
+        ws["G16"] = form_data["依賴內容"]
+        ws["G18"] = form_data["現象內容"]
         ws["Z18"] = form_data["原因內容"]
         ws["AS18"] = form_data["處置內容"]
         
         # 4. 其他資訊
-        ws["B73"] = form_data["社内連絡事項"]
+        ws["B73"] = form_data["內部連絡事項"]
         ws["I76"] = form_data["作業區分"]
-        ws["AB76"] = form_data["作業内容"]
+        ws["AB76"] = form_data["作業內容"]
         ws["AV76"] = form_data["Error_Message"]
-        ws["AO79"] = form_data["承認者"]
-        ws["AU79"] = form_data["審查者"]
-        ws["BA79"] = form_data["作成者"]
+        ws["AO79"] = form_data["承認人"]
+        ws["AU79"] = form_data["審查人"]
+        ws["BA79"] = form_data["製作人"]
         
         # 5. 時數計算結果 (從後端回傳的值)
         # 假設平日時數在 Q21，夜間在 Q23 (請修改成正確座標)
