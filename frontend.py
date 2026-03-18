@@ -83,7 +83,7 @@ with st.form("full_service_form"):
         customer = st.selectbox("顧客名", ["Fab 8A", "Fab 8B", "Fab 12", "其他"])
     with col2:
         svo_no = st.text_input("SVO. NO.")
-        request_no = st.text_input("依頼作業NO.")
+        request_no = st.text_input("依賴作業NO.")
     with col3:
         pic = st.text_input("承辦人")
         worker_name = st.text_input("工程師姓名 (系統紀錄用)")
@@ -100,14 +100,14 @@ with st.form("full_service_form"):
         sn = st.text_input("S/N (設備序號)")
         tool_id = st.text_input("Tool ID", "SR-001")
     with col7:
-        warranty = st.radio("保固狀態", ["保証期間内", "保証期間外"])
-        completion = st.radio("完工狀態", ["完了", "未完"])
+        warranty = st.radio("保固狀態", ["保證期間內", "保證期間外"])
+        completion = st.radio("完工狀態", ["已完工", "未完工"])
 
     st.subheader("3. 處理內容紀錄")
-    request_content = st.text_area("依賴内容", height=68)
+    request_content = st.text_area("依賴內容", height=68)
     col8, col9, col10 = st.columns(3)
     with col8:
-        phenomenon = st.text_area("現象内容", height=100)
+        phenomenon = st.text_area("現象內容", height=100)
     with col9:
         cause = st.text_area("原因內容", height=100)
     with col10:
@@ -119,21 +119,21 @@ with st.form("full_service_form"):
         work_class = st.selectbox("作業區分", ["01:Contract for Maintenance", "02:Repair", "05:Integrated Preventive Maintenance", "其他"])
         start_time = st.time_input("作業開始時間")
     with col12:
-        work_content = st.selectbox("作業内容", ["01:Contract for Maintenance", "02:Repair", "10:Application Support", "其他"])
+        work_content = st.selectbox("作業內容", ["01:Contract for Maintenance", "02:Repair", "10:Application Support", "其他"])
         end_time = st.time_input("作業結束時間")
     with col13:
         error_msg = st.text_input("Error Message")
         is_workday = st.checkbox("是否為平日上班日？", value=True)
 
     st.subheader("5. 備註與簽核")
-    internal_notes = st.text_area("社内連絡事項")
+    internal_notes = st.text_area("內部連絡事項")
     col14, col15, col16 = st.columns(3)
     with col14:
-        approver = st.text_input("承認者")
+        approver = st.text_input("承認人")
     with col15:
-        reviewer = st.text_input("審查者")
+        reviewer = st.text_input("審查人")
     with col16:
-        creator = st.text_input("作成者", worker_name) # 預設帶入工程師名字
+        creator = st.text_input("製作人", worker_name) # 預設帶入工程師名字
 
     # 送出按鈕
     submitted = st.form_submit_button("1. 提交紀錄並產生報表", type="primary", use_container_width=True)
@@ -160,7 +160,7 @@ if submitted:
         "簽發日": issue_date,
         "SVO_NO": svo_no,
         "顧客名": customer,
-        "依頼作業NO": request_no,
+        "依賴作業NO": request_no,
         "承辦人": pic,
         "品名": model,
         "形式": model_type,
@@ -170,17 +170,17 @@ if submitted:
         "啟用年月": install_date,
         "Tool_ID": tool_id,
         "完工狀態": completion,
-        "依賴内容": request_content,
-        "現象内容": phenomenon,
+        "依賴內容": request_content,
+        "現象內容": phenomenon,
         "原因內容": cause,
         "處置內容": action,
-        "社内連絡事項": internal_notes,
+        "內部連絡事項": internal_notes,
         "作業區分": work_class,
-        "作業内容": work_content,
+        "作業內容": work_content,
         "Error_Message": error_msg,
-        "承認者": approver,
-        "審查者": reviewer,
-        "作成者": creator
+        "承認人": approver,
+        "審查人": reviewer,
+        "製作人": creator
     }
     
     try:
