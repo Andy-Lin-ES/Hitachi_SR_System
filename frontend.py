@@ -6,7 +6,7 @@ import os
 from openpyxl import load_workbook
 
 # 設定要連線的後端 API 網址
-API_URL = "https://hitachi-backend-xxxx.onrender.com"
+API_URL = "https://hitachi-sr-system-backend.onrender.com"
 
 st.set_page_config(page_title="日立維修服務系統", layout="wide") # 改為 wide 讓畫面更寬廣
 st.title("🛠️ 日立維修服務報告書 (完整版)")
